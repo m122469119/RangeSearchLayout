@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mix.searcher.DataInfo;
-import com.mix.searcher.SeamlessRangeSeekBarLayout;
+import com.mix.searcher.SearcherRangeSeekBarLayout;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final SeamlessRangeSeekBarLayout seamlessRangeSeekBarLayout = findViewById(R.id.ll_salary);
+        final SearcherRangeSeekBarLayout seamlessRangeSeekBarLayout = findViewById(R.id.ll_salary);
         ArrayList<DataInfo> salarys = new ArrayList<>();
         salarys.add(new DataInfo("0", "0K"));
         salarys.add(new DataInfo("1", "1K"));

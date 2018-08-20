@@ -3,8 +3,6 @@ package com.mix.searcher;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -25,7 +23,7 @@ import java.util.List;
  * On:        2018/8/7 11:22
  * Email:     122469119@qq.com
  */
-public class SeamlessRangeSeekBarView extends RelativeLayout {
+public class SearcherRangeSeekBarView extends RelativeLayout {
     private LinearLayout mSlideLeft;
     private LinearLayout mSlideRight;
 
@@ -52,10 +50,10 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
     private int mTopUpper;
 
     private Paint mPaint;
-    private Path mPath;
-    private Path dstPath;
-
-    private PathMeasure mPathMeasure;
+    //    private Path mPath;
+    //    private Path dstPath;
+    //
+    //    private PathMeasure mPathMeasure;
 
     //   private int mPathLeft;
     // private int mPathRight;
@@ -65,25 +63,25 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
     private List<String> mDatas = new ArrayList<>();
 
 
-    public SeamlessRangeSeekBarView(Context context) {
+    public SearcherRangeSeekBarView(Context context) {
         this(context, null);
     }
 
-    public SeamlessRangeSeekBarView(Context context, AttributeSet attrs) {
+    public SearcherRangeSeekBarView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SeamlessRangeSeekBarView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SearcherRangeSeekBarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mPath = new Path();
-        dstPath = new Path();
+        //        mPath = new Path();
+        //        dstPath = new Path();
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(getResources().getColor(R.color.progress_select));
         mPaint.setStrokeWidth(dpTpPx(3f));
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStyle(Paint.Style.FILL);
 
         initViewDrag();
     }
@@ -179,18 +177,15 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
 
                 if (changedView == mSlideRight) {
 
-                    //此处其实为向下取整,例如 10/3 = 3.33333 10/3.33333 =3;
+                    //此处其实为向下取整,例如 10/3 = 3.33333 10/3.33333 =3.0000003;
 
                     int valuesRight = (int) (mSlideRight.getLeft() / mUnitLong);
+
                     mCurrentSalaryRight = mRangeDatas.get(valuesRight).getName();
 
                     mLeftUpper = mSlideRight.getLeft();
 
                     mTvSalaryUpper.setText(mCurrentSalaryRight);
-                }
-
-                if (salaryProgressListener != null) {
-                    salaryProgressListener.salaryProgress(mCurrentSalaryLeft, mCurrentSalaryRight);
                 }
 
                 postInvalidate();
@@ -217,15 +212,15 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
                 switch (state) {
                     //不拖拽状态
                     case ViewDragHelper.STATE_IDLE:
-                        mTvSalaryLower.setBackgroundResource(R.drawable.seamless_btn_pop_unselect);
-                        mTvSalaryUpper.setBackgroundResource(R.drawable.seamless_btn_pop_unselect);
+                        mTvSalaryLower.setBackgroundResource(R.drawable.searcher_btn_pop_unselect);
+                        mTvSalaryUpper.setBackgroundResource(R.drawable.searcher_btn_pop_unselect);
                         break;
                     //拖拽中
                     case ViewDragHelper.STATE_DRAGGING:
                         if (mViewDragHelper.getCapturedView() == mSlideLeft) {
-                            mTvSalaryLower.setBackgroundResource(R.drawable.seamless_btn_pop_select);
+                            mTvSalaryLower.setBackgroundResource(R.drawable.searcher_btn_pop_select);
                         } else {
-                            mTvSalaryUpper.setBackgroundResource(R.drawable.seamless_btn_pop_select);
+                            mTvSalaryUpper.setBackgroundResource(R.drawable.searcher_btn_pop_select);
                         }
                         break;
                     //view设置中
@@ -319,7 +314,6 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
             mLeftUpper = mSlideRight.getLeft();
             mTopUpper = mSlideRight.getTop();
 
-
             if (mMinValue != 0) {
 
                 //向上取整,防止精度丢失
@@ -329,8 +323,6 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
 
             } else {
                 mCurrentPositionLeft = mSlideLeft.getLeft();
-
-
             }
 
             if (mMaxValue != 0) {
@@ -342,7 +334,6 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
 
             } else {
                 mCurrentPotionRight = mSlideRight.getLeft();
-
             }
 
             isFirst = false;
@@ -351,20 +342,32 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
         //设置view的位置
         mSlideLeft.layout(mLeftLower, mTopLower, mLeftLower + mSlideLeft.getMeasuredWidth(), mTopLower + mSlideLeft.getMeasuredHeight());
         mSlideRight.layout(mLeftUpper, mTopUpper, mLeftUpper + mSlideRight.getMeasuredWidth(), mTopUpper + mSlideRight.getMeasuredHeight());
+
+        if (salaryProgressListener != null) {
+            salaryProgressListener.salaryProgress(mCurrentSalaryLeft, mCurrentSalaryRight);
+        }
+
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        mPath.reset();
-        dstPath.reset();
-        mPath.moveTo(mViewProgress.getLeft(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
-        mPath.lineTo(mViewProgress.getRight(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
+        // mPath.reset();
+        //        dstPath.reset();
+        //        mPath.moveTo(mViewProgress.getLeft(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
+        //        mPath.lineTo(mViewProgress.getRight(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
+        //
+        //        mPathMeasure = new PathMeasure(mPath, false);
+        //        mPathMeasure.getSegment(mSlideLeft.getLeft(), mSlideRight.getLeft(), dstPath, true);
+        //
+        //        canvas.drawPath(dstPath, mPaint);
 
-        mPathMeasure = new PathMeasure(mPath, false);
-        mPathMeasure.getSegment(mSlideLeft.getLeft(), mSlideRight.getLeft(), dstPath, true);
-
-        canvas.drawPath(dstPath, mPaint);
+        canvas.drawLine(
+                mSlideLeft.getLeft() + mSlideLeft.getWidth() / 2,
+                mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2,
+                mSlideRight.getLeft() + mSlideRight.getWidth() / 2,
+                mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2, mPaint)
+        ;
 
     }
 
@@ -435,4 +438,8 @@ public class SeamlessRangeSeekBarView extends RelativeLayout {
 
     }
 
+
+    public void setFirst(boolean first) {
+        isFirst = true;
+    }
 }

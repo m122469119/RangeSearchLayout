@@ -29,7 +29,7 @@
             android:textSize="14sp"/>
 
     </LinearLayout>
-    <com.mix.searcher.SeamlessRangeSeekBarView
+    <com.mix.searcher.SearcherRangeSeekBarView
         android:id="@+id/seamless_range_seekbar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,10 +61,11 @@
                 android:id="@+id/tv_salary_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seamless_btn_pop_unselect"
+                android:background="@drawable/searcher_btn_pop_unselect"
                 android:gravity="center_horizontal"
+                android:includeFontPadding="false"
                 android:paddingRight="2dp"
-                android:paddingTop="2.3dp"
+                android:paddingTop="2.5dp"
                 android:text="0K"
                 android:textColor="@android:color/white"
                 android:textSize="8sp"
@@ -80,7 +81,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seamless_btn_slider"/>
+                android:background="@drawable/searcher_btn_slider"/>
         </LinearLayout>
 
 
@@ -99,9 +100,10 @@
                 android:id="@+id/tv_salary_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seamless_btn_pop_unselect"
+                android:background="@drawable/searcher_btn_pop_unselect"
                 android:gravity="center_horizontal"
-                android:paddingTop="2.3dp"
+                android:includeFontPadding="false"
+                android:paddingTop="2.5dp"
                 android:text="100K"
                 android:textColor="@android:color/white"
                 android:textSize="8sp"
@@ -116,10 +118,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seamless_btn_slider"
+                android:background="@drawable/searcher_btn_slider"
             />
         </LinearLayout>
-    </com.mix.searcher.SeamlessRangeSeekBarView>
+    </com.mix.searcher.SearcherRangeSeekBarView>
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"

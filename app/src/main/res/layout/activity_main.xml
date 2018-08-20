@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.mix.searcher.SeamlessRangeSeekBarLayout
+    <com.mix.searcher.SearcherRangeSeekBarLayout
         android:id="@+id/ll_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:slr_option_name="月薪要求"
-        app:slr_option_unit="K"
+        app:srs_option_name="月薪要求"
+        app:srs_option_unit="K"
     />
 </android.support.constraint.ConstraintLayout>
