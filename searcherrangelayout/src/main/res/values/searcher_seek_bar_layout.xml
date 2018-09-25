@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="progress_nomal">#E6E6E6</color>
-    <color name="progress_select">#ff0378d8</color>
-    <declare-styleable name="SearcherRangeSeekBarLayout">
-        <attr name="srs_option_name" format="string"/>
-        <attr name="srs_option_unit" format="string"/>
-    </declare-styleable>
-</resources>

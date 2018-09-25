@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <com.mix.searcher.SearcherRangeSeekBarLayout
+    <com.mix.rangesearchlayout.RangeSearchLayout
         android:id="@+id/ll_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srs_option_name="月薪要求"
-        app:srs_option_unit="K"
+        app:slr_option_name="月薪要求"
+        app:slr_option_unit="（1K以下）"
     />
-</android.support.constraint.ConstraintLayout>
+
+    <com.mix.rangesearchlayout.RangeSearchLayout
+        android:id="@+id/ll_work_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:slr_option_name="工作经验"
+        app:slr_option_unit="（无经验）"
+    />
+
+</LinearLayout>
