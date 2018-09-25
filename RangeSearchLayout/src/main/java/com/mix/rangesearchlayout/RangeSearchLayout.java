@@ -10,14 +10,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Des:       SeamlessRangeSeekBarLayout
+ * Des:       RangeSearchLayout
  * Create by: m122469119
  * On:        2018\08\07 15:53N
  * Email:     122469119@qq.com
  */
 public class RangeSearchLayout extends FrameLayout {
 
-    private RangeSearchView mSeamlessRangeSeekBarView;
+    private RangeSearchView mRangeSearchView;
     private TextView mTvOptionUtil;
     private TextView mTvOptionName;
     private String mOptionUnit;
@@ -40,16 +40,16 @@ public class RangeSearchLayout extends FrameLayout {
 
         mTvOptionUtil = view.findViewById(R.id.tv_option_util);
 
-        mSeamlessRangeSeekBarView = view.findViewById(R.id.seamless_range_seekbar_view);
+        mRangeSearchView = view.findViewById(R.id.seamless_range_seekbar_view);
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.RangeSearchLayout);
 
-        mOptionName = array.getString(R.styleable.RangeSearchLayout_slr_option_name);
+        mOptionName = array.getString(R.styleable.RangeSearchLayout_rsl_option_name);
         mTvOptionName.setText(mOptionName);
 
-        mOptionUnit = array.getString(R.styleable.RangeSearchLayout_slr_option_unit);
+        mOptionUnit = array.getString(R.styleable.RangeSearchLayout_rsl_option_unit);
 
-        mSeamlessRangeSeekBarView.setRangeProgressListener(new RangeSearchView.SalaryProgressListener() {
+        mRangeSearchView.setRangeProgressListener(new RangeSearchView.SalaryProgressListener() {
             @Override
             public void salaryProgress(String salaryLeft, String salaryRight) {
                 if (mRangeDatas.get(0).getName().equals(salaryLeft) && mRangeDatas.get(mRangeDatas.size() - 1).getName().equals(salaryRight)) {
@@ -75,34 +75,34 @@ public class RangeSearchLayout extends FrameLayout {
 
     public void setRangeDatas(ArrayList<DataInfo> rangeDatas) {
         mRangeDatas = rangeDatas;
-        mSeamlessRangeSeekBarView.setRangeDatas(rangeDatas);
+        mRangeSearchView.setRangeDatas(rangeDatas);
     }
 
     public DataInfo getMinDataInfo() {
-        return mSeamlessRangeSeekBarView.getMinDataInfo();
+        return mRangeSearchView.getMinDataInfo();
     }
 
     public DataInfo getMaxDataInfo() {
-        return mSeamlessRangeSeekBarView.getMaxDataInfo();
+        return mRangeSearchView.getMaxDataInfo();
     }
 
 
     public void setMinMaxValue(String start, String end) {
         for (int i = 0; i < mRangeDatas.size(); i++) {
             if (mRangeDatas.get(i).getId().equals(start)) {
-                mSeamlessRangeSeekBarView.setMinValue(i);
+                mRangeSearchView.setMinValue(i);
             }
 
             if (mRangeDatas.get(i).getId().equals(end)) {
-                mSeamlessRangeSeekBarView.setMaxValue(i);
+                mRangeSearchView.setMaxValue(i);
             }
         }
 
-        mSeamlessRangeSeekBarView.setFirst(true);
+        mRangeSearchView.setFirst(true);
 
-        mSeamlessRangeSeekBarView.postInvalidate();
+        mRangeSearchView.postInvalidate();
 
-        mSeamlessRangeSeekBarView.updateSalaryProgressListener();
+        mRangeSearchView.updateSalaryProgressListener();
 
     }
 

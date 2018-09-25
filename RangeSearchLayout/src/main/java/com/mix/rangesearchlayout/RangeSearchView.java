@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 /**
- * Des:       SeamlessRangeSeekBarView
+ * Des:       RangeSearchView
  * Create by: m122469119
  * On:        2018/8/7 11:22
  * Email:     122469119@qq.com
@@ -35,8 +35,6 @@ public class RangeSearchView extends RelativeLayout {
 
     private float mUnitLong;
 
-    //    private int mCurrentPositionLeft;
-    //    private int mCurrentPotionRight;
 
     private DataInfo mCurrentSalaryLeft;
     private DataInfo mCurrentSalaryRight;
@@ -49,13 +47,7 @@ public class RangeSearchView extends RelativeLayout {
     private int mTopUpper;
 
     private Paint mPaint;
-    //    private Path mPath;
-    //    private Path dstPath;
-    //
-    //    private PathMeasure mPathMeasure;
 
-    //   private int mPathLeft;
-    // private int mPathRight;
 
     private SalaryProgressListener salaryProgressListener;
 
@@ -342,15 +334,6 @@ public class RangeSearchView extends RelativeLayout {
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        // mPath.reset();
-        //        dstPath.reset();
-        //        mPath.moveTo(mViewProgress.getLeft(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
-        //        mPath.lineTo(mViewProgress.getRight(), mViewProgress.getTop() + ((float) mViewProgress.getMeasuredHeight()) / 2);
-        //
-        //        mPathMeasure = new PathMeasure(mPath, false);
-        //        mPathMeasure.getSegment(mSlideLeft.getLeft(), mSlideRight.getLeft(), dstPath, true);
-        //
-        //        canvas.drawPath(dstPath, mPaint);
 
         canvas.drawLine(
                 mSlideLeft.getLeft() + mSlideLeft.getWidth() / 2,

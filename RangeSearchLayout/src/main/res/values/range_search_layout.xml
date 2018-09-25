@@ -3,7 +3,7 @@
     <color name="progress_nomal">#E6E6E6</color>
     <color name="progress_select">#ff0378d8</color>
     <declare-styleable name="RangeSearchLayout">
-        <attr name="slr_option_name" format="string"/>
-        <attr name="slr_option_unit" format="string"/>
+        <attr name="rsl_option_name" format="string"/>
+        <attr name="rsl_option_unit" format="string"/>
     </declare-styleable>
 </resources>

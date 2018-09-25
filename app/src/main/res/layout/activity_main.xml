@@ -11,16 +11,16 @@
         android:id="@+id/ll_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:slr_option_name="月薪要求"
-        app:slr_option_unit="（1K以下）"
+        app:rsl_option_name="月薪要求"
+        app:rsl_option_unit="（1K以下）"
     />
 
     <com.mix.rangesearchlayout.RangeSearchLayout
         android:id="@+id/ll_work_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:slr_option_name="工作经验"
-        app:slr_option_unit="（无经验）"
+        app:rsl_option_name="工作经验"
+        app:rsl_option_unit="（无经验）"
     />
 
 </LinearLayout>
